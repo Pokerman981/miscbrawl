@@ -13,8 +13,8 @@ import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.command.spec.CommandSpec;
 import org.spongepowered.api.config.ConfigDir;
 import org.spongepowered.api.config.DefaultConfig;
+import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
-import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Text;
 
@@ -58,8 +58,11 @@ public class Main {
 		return logger;
 	}
 	
+	@Listener
 	public void RegisterListeners(GameInitializationEvent e){
 		Sponge.getEventManager().registerListeners(this, new connectionListener(this));
+		try {registerNodes();} catch (IOException e1) {e1.printStackTrace();}
+		registerCommand();
 	}
 	
 	public void registerNodes() throws IOException{
@@ -84,6 +87,7 @@ public class Main {
 					}
 				})
 				.build();
+		Sponge.getCommandManager().register(this, reloadCommand, "miscreload");
 	}
 
 	public static String color(String string) {

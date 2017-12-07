@@ -22,7 +22,7 @@ public class connectionListener {
 	public void onJoin(ClientConnectionEvent.Join e){
 		if (e.getTargetEntity().hasPermission("onJoin.bcast")){
 			String message = plugin.config().getNode("messages", "join-message").getString().replace("%player%", e.getTargetEntity().getName());
-			MessageChannel.TO_ALL.send(Text.of(TextSerializers.FORMATTING_CODE.serialize(Text.of(message))));
+			MessageChannel.TO_ALL.send(Text.of(TextSerializers.FORMATTING_CODE.deserialize(TextSerializers.FORMATTING_CODE.serialize(Text.of(message)))));
 		}
 		
 	}
