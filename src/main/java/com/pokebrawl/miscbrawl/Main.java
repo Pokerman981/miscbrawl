@@ -14,6 +14,8 @@ import org.spongepowered.api.command.spec.CommandSpec;
 import org.spongepowered.api.config.ConfigDir;
 import org.spongepowered.api.config.DefaultConfig;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
+import org.spongepowered.api.plugin.Dependency;
+import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Text;
 
 import com.google.inject.Inject;
@@ -21,6 +23,8 @@ import com.pokebrawl.miscbrawl.events.connectionListener;
 
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
+
+@Plugin(id = "miscbrawl", name = "miscbrawl", version = "1.0")
 
 public class Main {
 
