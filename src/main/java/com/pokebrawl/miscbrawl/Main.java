@@ -9,6 +9,7 @@ import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
+import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.command.spec.CommandSpec;
 import org.spongepowered.api.config.ConfigDir;
@@ -19,6 +20,7 @@ import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Text;
 
 import com.google.inject.Inject;
+import com.pokebrawl.miscbrawl.commands.StaffchatCommand;
 import com.pokebrawl.miscbrawl.events.connectionListener;
 
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
@@ -88,6 +90,12 @@ public class Main {
 				})
 				.build();
 		Sponge.getCommandManager().register(this, reloadCommand, "miscreload");
+		
+        CommandSpec adminchat = CommandSpec.builder().description(Text.of("Sends a message into admin chat"))
+                .permission("miscbrawl.adminchat")
+                .arguments(GenericArguments.remainingJoinedStrings(Text.of("message")))
+                .executor(new StaffchatCommand())
+                .build();
 	}
 
 	public static String color(String string) {
