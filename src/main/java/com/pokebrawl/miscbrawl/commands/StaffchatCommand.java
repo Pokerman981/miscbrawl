@@ -19,7 +19,7 @@ public class StaffchatCommand implements CommandExecutor{
         Sponge.getServer().getConsole().sendMessage(Text.of(TextColors.AQUA, "{", TextColors.WHITE, src.getName(), TextColors.AQUA, "} ", TextColors.AQUA, message));
 
         for (Player player : Sponge.getServer().getOnlinePlayers()) {
-            if (player.hasPermission("miscec.adminchat")) {
+            if (player.hasPermission("miscbrawl.adminchat")) {
                 player.sendMessage(Text.of(TextColors.AQUA, "{", TextColors.WHITE, src.getName(), TextColors.AQUA, "} " + message));
             }
         }
