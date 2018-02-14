@@ -96,6 +96,8 @@ public class Main {
                 .arguments(GenericArguments.remainingJoinedStrings(Text.of("message")))
                 .executor(new StaffchatCommand())
                 .build();
+        
+        Sponge.getCommandManager().register(this, adminchat, "a");
 	}
 
 	public static String color(String string) {
